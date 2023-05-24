@@ -2,7 +2,7 @@
 
 Or visit the link below:
 
-https://github.com/nicholaskarlson/Intro_Matrix_Algebra/releases
+https://github.com/nicholaskarlson/Getting-to-Know-Amazon-Web-Services/releases/
 
 # Getting to Know Amazon Web Services (AWS) as of September 2021
 
