@@ -64,6 +64,10 @@ AWS Compute Services are the backbone of many applications running on Amazon Web
 
 **AWS Lambda**: This service lets you run your code without provisioning or managing servers. You just upload your code, and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app. This is an example of "Function as a Service" or FaaS, and is used for serverless computing.
 
+**AWS Elastic Beanstalk**: is a fully managed service offered by Amazon Web Services that makes it easy for developers to deploy and run applications in multiple languages. These include applications written in Java, .NET, PHP, Node.js, Python, Ruby, and Go, or in custom runtime environments using Docker. Elastic Beanstalk supports applications developed in a range of familiar servers, including Apache, Nginx, Passenger, and IIS.
+
+The central idea behind Elastic Beanstalk is that you can focus on your application while AWS handles the infrastructure setup, scaling, and administration.
+
 **Amazon ECS** (Elastic Container Service): Amazon ECS is a highly scalable, high-performance container orchestration service that supports Docker containers and allows you to run applications on a managed cluster of Amazon EC2 instances. ECS eliminates the need for you to install, operate, and scale your own cluster management infrastructure.
 
 **Amazon EKS** (Elastic Kubernetes Service): Amazon EKS is a managed service that makes it easy for you to run Kubernetes on AWS without needing to install and operate your own Kubernetes control plane or nodes. Kubernetes is a popular open-source system for automating the deployment, scaling, and management of containerized applications.
