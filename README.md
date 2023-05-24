@@ -1,2 +1,23 @@
-# Getting-to-Know-Amazon-Web-Services
- An Open Textbook
+# To view and download a pdf version of this textbook that was generated from this repository, Click on the "Releases" tab located near the top or side of this GitHub page; textbook.pdf is the name of the file. 
+
+Or visit the link below:
+
+https://github.com/nicholaskarlson/Intro_Matrix_Algebra/releases
+
+# Getting to Know Amazon Web Services (AWS) as of September 2021
+
+
+## An Open Textbook
+
+By Nicholas Elliott Karlson
+
+## Contributing
+
+Contributions to improve the textbook are welcome. Please fork the repository, make your changes, and then submit a pull request.
+
+## License
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt
+
