@@ -1,4 +1,4 @@
-# To view and download a pdf version of this textbook that was generated from this repository, Click on the "Releases" tab located near the top or side of this GitHub page; textbook.pdf is the name of the file. 
+# To view and download a pdf version of this textbook that was generated from this repository, Click on the "Releases" tab located near the top or side of this GitHub page; Getting-to-Know-AWS-as-of-September-2021-Nicholas-Karlson-24May2023.pdf is the name of the file. 
 
 Or visit the link below:
 
