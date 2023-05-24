@@ -44,6 +44,10 @@ By Nicholas Elliott Karlson
 
 **AWS Lambda**: This service lets you run your code without provisioning or managing servers. You just upload your code, and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app. This is an example of "Function as a Service" or FaaS, and is used for serverless computing.
 
+**AWS Elastic Beanstalk**: is a fully managed service offered by Amazon Web Services that makes it easy for developers to deploy and run applications in multiple languages. These include applications written in Java, .NET, PHP, Node.js, Python, Ruby, and Go, or in custom runtime environments using Docker. Elastic Beanstalk supports applications developed in a range of familiar servers, including Apache, Nginx, Passenger, and IIS.
+
+The central idea behind Elastic Beanstalk is that you can focus on your application while AWS handles the infrastructure setup, scaling, and administration.
+
 **Amazon ECS** (Elastic Container Service): Amazon ECS is a highly scalable, high-performance container orchestration service that supports Docker containers and allows you to run applications on a managed cluster of Amazon EC2 instances. ECS eliminates the need for you to install, operate, and scale your own cluster management infrastructure.
 
 **Amazon EKS** (Elastic Kubernetes Service): Amazon EKS is a managed service that makes it easy for you to run Kubernetes on AWS without needing to install and operate your own Kubernetes control plane or nodes. Kubernetes is a popular open-source system for automating the deployment, scaling, and management of containerized applications.
@@ -115,6 +119,223 @@ AWS Lambda is a serverless compute service that lets you run your code without p
 9. **Microservices Architecture**: Lambda is used in microservices architectures because it allows developers to focus on product development rather than infrastructure management. Each function can be a separate microservice, with its own responsibility, and can be developed, updated, scaled, and monitored independently.
 
 AWS Lambda has revolutionized the way we think about compute resources for applications, by allowing developers to focus on writing code without having to worry about the underlying infrastructure, scaling, or deployment pipeline. It is an essential service for anyone looking to build applications in the AWS ecosystem.
+
+
+## AWS Elastic Beanstalk
+
+**AWS Elastic Beanstalk**: is a fully managed service offered by Amazon Web Services that makes it easy for developers to deploy and run applications in multiple languages. These include applications written in Java, .NET, PHP, Node.js, Python, Ruby, and Go, or in custom runtime environments using Docker. Elastic Beanstalk supports applications developed in a range of familiar servers, including Apache, Nginx, Passenger, and IIS.
+
+**The central idea behind Elastic Beanstalk is that you can focus on your application while AWS handles the infrastructure setup, scaling, and administration. Here's how it works**:
+
+**Deployment**: You start by deploying your application code. This can be as simple as uploading a .zip file of your code or as advanced as integrating with a Git repository for automatic deployments. You can also include a file called 'environment manifest' (a file named "Procfile") that describes the components of your application and any associated environment settings.
+
+**Environment Management**: Once your code is uploaded, Elastic Beanstalk automatically handles the details of capacity provisioning, load balancing, scaling, and application health monitoring.
+
+**Supported Platforms**: Elastic Beanstalk supports applications developed in Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, Nginx, Passenger, and IIS.
+
+**Server Configuration**: Elastic Beanstalk gives you control over the AWS resources powering your application and makes it easy to configure settings and software on Amazon EC2 instances.
+
+**Scaling**: With Elastic Beanstalk, your application can handle peaks in workload or traffic while minimizing your costs. You can set conditions for scaling your applications in/out and up/down based on your specific needs.
+
+**Monitoring and Management**: Elastic Beanstalk is integrated with **Amazon CloudWatch** and **AWS CloudTrail** for monitoring application and infrastructure performance. It provides a dashboard for managing applications, where you can view application health, check log files, and monitor application performance.
+
+**Developer Tools Integration**: It's integrated with **AWS developer tools** like **AWS CodeStar, AWS Cloud9, AWS CodeBuild, AWS CodeCommit, AWS CodePipeline, and AWS CodeDeploy**.
+
+By using Elastic Beanstalk, developers can focus on their applications and let AWS manage the undifferentiated heavy lifting of creating, configuring, and managing the infrastructure required to run and scale those applications.
+
+
+## Amazon CloudWatch
+
+**Amazon CloudWatch** is a monitoring service provided by Amazon Web Services (AWS) for its cloud resources and the applications that customers run on AWS. CloudWatch provides operational visibility into AWS resources and applications by collecting and tracking metrics, collecting and monitoring log files, setting alarms, and reacting to changes in your AWS resources.
+
+**Here are some of the key aspects of Amazon CloudWatch**:
+
+1. Metrics: CloudWatch can monitor AWS resources such as Amazon EC2 instances, Amazon DynamoDB tables, and Amazon RDS DB instances, and custom metrics generated by your applications and services, as well as any log files your applications generate. You can use these metrics to gain a wide range of insights - system-wide visibility into resource utilization, application performance, operational health, and more.
+
+2. Alarms: With CloudWatch, you can create a dashboard to monitor the services that power your applications, troubleshoot issues, and discover insights to optimize your applications. You can set alarms to help react to changes in your resources. These alarms reduce the time to detect and resolve issues by notifying you or triggering automated actions when thresholds you define are breached.
+
+3. Events: CloudWatch Events helps you to respond to changes in your AWS resources. When a change occurs in a resource, CloudWatch Events recognizes the change and takes the action that you've defined. For instance, you can automatically start an AWS Lambda function in response to a particular event.
+
+4. Logs: CloudWatch can collect and store logs from your resources, applications, and services in real-time. It allows you to view logs, search/filter logs, and even set alarms based on certain phrases, patterns or values within the logs. With CloudWatch, you can centralize the logs from all your systems, applications, and AWS services that you use, into a single, highly scalable service.
+
+5. ServiceLens: This CloudWatch feature provides a visual console that helps you analyze the health, performance, and availability of your applications in a single place.
+
+6. Anomaly Detection: Anomaly Detection applies machine-learning algorithms to continuously analyze system and application metrics, determine normal baselines, and surface anomalies with minimal user intervention.
+
+7. Container Insights: It is used to collect, aggregate, and summarize metrics and logs from your containerized applications and microservices.
+
+8. Contributor Insights: It analyzes time-series data to provide a view of the top contributors impacting the performance of your applications.
+
+By using Amazon CloudWatch, developers and operators can improve system and application performance, stay ahead of issues, and reduce the time spent on detective and diagnostic work.
+
+
+## AWS CloudTrail
+
+**AWS CloudTrail** is a service that enables governance, compliance, operational auditing, and risk auditing of your AWS account. It provides event history of your AWS account activity, including actions taken through the AWS Management Console, AWS SDKs, command-line tools, and other AWS services. This event history simplifies security analysis, resource change tracking, and troubleshooting.
+
+**Here are some of the key aspects of AWS CloudTrail**:
+
+1. Event history: CloudTrail records actions taken in your AWS account. This includes actions taken through the AWS Management Console, AWS SDKs, command-line tools, and AWS services. It provides an event history of your AWS account activity, including actions that have taken place in your account, who initiated the actions, services used, actions taken, parameters for the actions, and response elements returned by the AWS service.
+
+2. Security and compliance: With CloudTrail, you can log, continuously monitor, and retain account activity related to actions across your AWS infrastructure. CloudTrail provides a history of AWS API calls for your account, including API calls made through the AWS Management Console, AWS SDKs, command line tools, and other AWS services. This feature makes it an essential tool for security analysis and compliance audits.
+
+3. Governance, Risk, and Compliance Auditing: CloudTrail enables risk auditing of your AWS account, making it easier to ensure compliance with internal policies and regulatory standards.
+
+4. Operational troubleshooting: You can identify operational issues by continuously monitoring and logging your AWS account activity. With CloudTrail, you can discover the root cause of operational issues. For instance, if a user is experiencing difficulties in accessing a bucket in Amazon S3, you can check the trail and identify whether a change in permissions is causing the issue.
+
+5. Log file integrity validation: CloudTrail gives you the ability to verify the integrity of your event logs to ensure that they have not been tampered with.
+
+6. Event delivery: Every API call is logged in CloudTrail and delivered in an Amazon S3 bucket. The logs are also available to view and download from the CloudTrail console for 90 days.
+
+7. Integration with other services: AWS CloudTrail integrates with other AWS services like Amazon CloudWatch Logs for monitoring, AWS Glue for ETL jobs, Amazon Athena for querying data, and AWS Organizations to record all AWS activity across multiple accounts and Regions.
+
+By using AWS CloudTrail, you can achieve better visibility into user and resource activity by recording AWS Management Console actions and AWS API calls. You can then use the event history in CloudTrail to verify user activity and understand who did what, when, and from where.
+
+
+## AWS CodeStar
+
+**AWS CodeStar** is a cloud-based service provided by Amazon Web Services (AWS) that simplifies the process of developing, building, and deploying applications on AWS by providing a unified user interface. This service enables users to quickly develop, build, and deploy applications on AWS.
+
+**Here are some key aspects of AWS CodeStar**:
+
+1. Project Templates: AWS CodeStar provides a range of project templates for common application types and programming languages. You can choose from templates for web applications, web services, and more, in programming languages including Python, Ruby, Java, JavaScript (Node.js), PHP, .NET and Go. This accelerates the setup of software deployments and enables developers to start coding faster.
+
+2. Unified Interface: AWS CodeStar provides a unified user interface for you to manage software development activities in one place. With CodeStar, you can set up your entire continuous delivery toolchain in minutes, so you can start releasing code faster.
+
+3. AWS Integration: AWS CodeStar is designed to work with other AWS services. This includes AWS CodeCommit for source control, AWS CodeBuild for build management, AWS CodeDeploy for deployment services, and AWS CodePipeline for software release workflow. It can also be integrated with AWS Cloud9, a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser.
+
+4. Collaboration and Access Control: CodeStar allows easy project collaboration with team members. It comes with a built-in issue tracking integration with Atlassian JIRA Software, and allows you to easily add team members and manage access, making project management simpler.
+
+5. Monitoring and Metrics: With AWS CodeStar, you can easily monitor application activity with Amazon CloudWatch. It provides a dashboard for each project, giving insights into code commits, build, tests, and deployments.
+
+6. Security: AWS CodeStar follows the AWS shared responsibility model. It handles the security of the underlying infrastructure, while users are responsible for securing their applications.
+
+In summary, AWS CodeStar can be a great tool for organizations looking to streamline their development processes, as it offers an integrated suite of tools for managing the software development lifecycle. With CodeStar, developers can focus on writing code and developing applications, while AWS manages the details of the associated infrastructure.
+
+
+## AWS Cloud9
+
+**AWS Cloud9** is a cloud-based integrated development environment (IDE) provided by Amazon Web Services (AWS). It provides a space where developers can write, run, and debug code using only a web browser. It includes a code editor, debugger, and terminal, making it an all-in-one solution for writing, running, and debugging code. It's designed to work seamlessly with other AWS services, offering a variety of features to facilitate this.
+
+**Here are some key aspects of AWS Cloud9**:
+
+1. Cloud-based IDE: AWS Cloud9 provides an online environment to write, run, and debug code in several programming languages, including JavaScript, Python, PHP, Ruby, Go, and more. This eliminates the need to install software or set up servers, making it quicker and easier to start coding.
+
+2. Collaboration: AWS Cloud9 supports pair programming, or collaborative coding, where multiple developers can work on the same code at the same time, seeing each other's edits in real time. This feature is beneficial for code reviews, troubleshooting, and collaborative learning.
+
+3. Direct terminal access: AWS Cloud9 provides direct terminal access to AWS environments, which allows developers to run commands and directly access AWS services. This terminal runs in the context of the IDE and is connected to the environment that hosts the Cloud9 IDE.
+
+4. Built-in Image Editor: AWS Cloud9 comes with a built-in image editor that allows developers to manipulate images by changing dimensions, applying filters, and adjusting colors without leaving the development environment.
+
+5. Integration with AWS Services: AWS Cloud9 is designed to integrate with other AWS services like AWS CodeStar and AWS Lambda, which provides a full suite of tools for developing, deploying, and debugging applications. For instance, with AWS Lambda, developers can create and modify serverless applications that automatically scale from within the IDE.
+
+6. Environment Management: AWS Cloud9 allows you to duplicate, delete, and create new environments easily, which enables faster switch between different projects or parts of a project.
+
+7. Cost-Effective: AWS Cloud9 is cost-effective as you only pay for the compute and storage resources that you use. The Cloud9 service itself does not have an extra charge.
+
+AWS Cloud9 is particularly useful for developers who are already using AWS or for development teams that want to streamline their workflow and collaborate more effectively. Its features are designed to simplify the process of writing, running, and debugging code in the cloud.
+
+
+## AWS CodeBuild
+
+**AWS CodeBuild** is a fully managed continuous integration service offered by Amazon Web Services (AWS). It compiles source code, runs tests, and produces software packages that are ready to deploy, automating the build process and removing the need to provision, manage, and scale your own build servers.
+
+**Here are some key aspects of AWS CodeBuild**:
+
+1. Fully Managed: CodeBuild eliminates the need to set up, patch, and manage your own build servers, reducing the overhead associated with maintaining infrastructure. It handles all aspects of build execution, including resource provisioning and scaling.
+
+2. Continuous Scaling: AWS CodeBuild automatically scales up and down in response to your build traffic. You don't need to worry about infrastructure capacity for your build projects, making it suitable for both small projects and large-scale, enterprise-level applications.
+
+3. Pay-As-You-Go: With AWS CodeBuild, you only pay for the build time you actually use, down to the minute. There are no upfront fees or long-term commitments, making it a cost-effective option.
+
+4. Broad Language and Tool Support: CodeBuild supports a wide variety of programming languages, build tools, and frameworks including Java, Ruby, Python, Go, Node.js, Android, .NET Core, and Docker. You can also use it to run custom shell scripts.
+
+5. Extensible and Customizable: You have control over build execution via a build specification file, where you can specify the environment, commands, and runtime parameters.
+
+6. Secure: CodeBuild uses AWS Identity and Access Management (IAM) to manage access to resources, and all build artifacts are stored securely in Amazon S3. It also integrates with AWS Key Management Service (KMS) for added security.
+
+7. Integration with the AWS Ecosystem: AWS CodeBuild integrates with other services in the AWS ecosystem, like AWS CodePipeline for continuous integration and continuous delivery (CI/CD), AWS CodeDeploy for automated application deployments, and AWS CodeStar for full software development and CI/CD toolchain setup.
+
+8. Environment Variables and Caching: You can use environment variables in CodeBuild to create dynamic build commands and paths, while caching can be used to persist intermediate build artifacts between runs to speed up future builds.
+
+AWS CodeBuild is a powerful tool for automating software build processes. It's designed to work seamlessly with other AWS services, making it a key component in a robust, AWS-based CI/CD pipeline. It is particularly useful for development teams that are looking for a scalable, customizable, and secure build solution.
+
+
+## AWS CodeCommit
+
+**AWS CodeCommit** is a fully-managed source control service that hosts secure Git-based repositories. It's part of Amazon Web Services' suite of tools for DevOps and it's designed to make it easier for teams to collaborate on code in a secure and highly scalable ecosystem.
+
+**Here are some of the key features of AWS CodeCommit**:
+
+1. Fully Managed: CodeCommit manages all the underlying infrastructure and automatically scales to meet your growing repository needs. This allows developers to focus on their code rather than managing servers, patching, or dealing with potential downtime.
+
+2. Git-Based Repositories: CodeCommit uses Git, one of the most popular version control systems. This means that any developer familiar with Git can start using CodeCommit with little to no additional learning curve.
+
+3. Secure: CodeCommit encrypts your files at rest and in transit. You can manage user access using AWS Identity and Access Management (IAM), which lets you fine-tune who can access which repositories and what they can do with them.
+
+4. Collaboration and Code Review: AWS CodeCommit supports pull requests, allowing multiple developers to collaborate on the same codebase without stepping on each other's toes. Code reviews can also be conducted within the service, providing a platform for feedback and quality assurance before changes are merged.
+
+5. Integration with AWS and Third-Party Services: CodeCommit is part of the AWS ecosystem and integrates well with other AWS services such as AWS CodeBuild, AWS CodePipeline, and AWS CodeDeploy for a full DevOps pipeline. It also integrates with third-party DevOps tools such as Jenkins, making it a flexible choice.
+
+6. High Availability and Durability: CodeCommit stores your code in multiple AWS data centers, ensuring that it's available when you need it and protected against potential data loss.
+
+7. Event Notifications and Triggers: You can set up triggers in AWS CodeCommit to respond to events (like the commit of a change or creation of a pull request), making it possible to automate some workflows. You can also integrate it with AWS CloudWatch for notifications and monitoring.
+
+8. Unlimited Repository Scaling: With CodeCommit, you're not limited to a certain repository size or file size, making it a scalable solution for all your codebase, regardless of its size.
+
+9. Cost-Effective: CodeCommit is free for up to five users, making it a cost-effective choice for small teams. For larger teams, the cost is based on active users, and there are no up-front fees or long-term commitments.
+
+Overall, AWS CodeCommit is a robust, secure, and highly available source control service that fits well into the AWS ecosystem and the wider DevOps landscape. It provides the benefits of a version control system with the additional advantages of being a managed service, freeing teams from the need to maintain their own version control infrastructure.
+
+
+## AWS CodePipeline
+
+**AWS CodePipeline** is a fully managed continuous integration (CI) and continuous delivery (CD) service that helps automate the release processes for fast and reliable application and infrastructure updates. CodePipeline is designed to enable developers and DevOps teams to automate the steps required to release their software changes to their users.
+
+**Here are some of the key features and benefits of AWS CodePipeline**:
+
+1. Continuous Integration and Continuous Delivery: CodePipeline automates the build, test, and deploy phases of your release process every time there is a code change. This automation helps you rapidly release new features to your users, improve your release quality, and reduce the time to resolve issues.
+
+2. Automated Deployment: You can model, visualize, and automate the steps required to release your software. CodePipeline automates the software release process, allowing you to rapidly deliver features and updates.
+
+3. Integration with AWS Services and Third-Party Tools: AWS CodePipeline can be integrated with other AWS services such as AWS CodeCommit, AWS CodeBuild, AWS CodeDeploy, AWS CloudFormation, AWS Lambda, and Amazon ECS. It also supports popular third-party tools such as GitHub (for source control), Jenkins (for build), and Spinnaker (for deployment).
+
+4. Flexible: AWS CodePipeline is highly flexible and can be configured according to your needs. You can set different pipelines for different branches, and have different actions based on the type of code commit.
+
+5. Secure: CodePipeline integrates with AWS Identity and Access Management (IAM), allowing you to assign user roles and permissions for your pipeline.
+
+6. High Availability: CodePipeline is designed to be highly available. It is built on AWS, which has a multitude of data centers around the world that are each isolated from failures in other Availability Zones.
+
+7. Cost-Effective: With CodePipeline, you pay only for what you use. There are no upfront fees or long-term commitments. Pricing is based on the number of active pipelines per month, and the first pipeline each month is free, making it a cost-effective choice for small teams.
+
+8. Notification and Monitoring: CodePipeline can be integrated with AWS CloudWatch to provide notifications and allow you to monitor your pipelines.
+
+9. Easy to Use: CodePipeline provides a user-friendly interface for creating, managing, and tracking workflows.
+
+In conclusion, AWS CodePipeline is a robust CI/CD service that provides a set of capabilities for automating and speeding up the process of releasing new software. By seamlessly integrating with other AWS services and third-party tools, it offers a comprehensive solution for managing the entire software release lifecycle.
+
+
+## AWS CodeDeploy
+
+**AWS CodeDeploy** is a fully managed deployment service provided by Amazon Web Services that automates software deployments to a variety of compute services including Amazon EC2, AWS Fargate, AWS Lambda, and your on-premises servers. AWS CodeDeploy makes it easier for you to rapidly release new features, helps avoid downtime during application deployment, and handles the complexity of updating your applications.
+
+**Key Features of AWS CodeDeploy**:
+
+Automated Deployments: AWS CodeDeploy automates your application deployments, reducing the risk of errors during manual deployments. You can easily launch and track the status of your deployments through the AWS Management Console or the AWS CLI.
+
+Centralized Control: CodeDeploy centralizes control over deployments, making it easier to orchestrate updates across your development, test, and production environments globally.
+
+Stop and Rollback: If there are errors during the deployment process, CodeDeploy automatically stops the deployment and rolls back to the previous stable version, minimizing the impact of a failed deployment.
+
+Easy Integration: CodeDeploy integrates with your existing software release process or continuous delivery toolchain, including other AWS Developer Tools like AWS CodePipeline, AWS CodeBuild, and AWS CodeCommit, as well as third-party tools such as GitHub, Jenkins, and Atlassian Bamboo.
+
+Support for Different Deployment Types: CodeDeploy supports different deployment types such as in-place deployment and blue/green deployments, giving you the flexibility to choose the one that best suits your needs.
+
+Support for Various Compute Platforms: You can deploy to Amazon EC2 instances, AWS Lambda functions, on-premises servers, or Amazon ECS services, helping you maintain a consistent deployment process, regardless of your target environment.
+
+Pre and Post Deployment Validation Hooks: CodeDeploy allows you to run scripts at various stages of the deployment process, enabling you to validate your environment and control the deployment process.
+
+In conclusion, AWS CodeDeploy is a powerful tool that automates application deployments, making the whole process more reliable and faster. By integrating with your existing CI/CD workflow, it helps you maintain high velocity and productivity while ensuring the reliability and stability of your applications.
 
 
 ## Amazon Elastic Container Service
