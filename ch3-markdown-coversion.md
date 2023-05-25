@@ -94,7 +94,194 @@ Each of these services is designed for different workloads and use cases. For ex
 
 Amazon EC2 is a powerful service that forms the backbone of many applications running on AWS. Its flexibility, scalability, and broad feature set make it a core component of any AWS-based infrastructure.
 
-**AWS Lambda**
+
+### Amazon EC2 Scenarios
+
+Amazon Elastic Compute Cloud (EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.
+
+
+#### Common Use Cases of Amazon EC2
+
+**Web and Application Hosting**: EC2 provides a scalable environment for deploying applications and websites. Configuration for such instances can vary, but a common setup includes a load balancer (like ELB), several EC2 instances running the application (like a t2.medium or t3.medium), and an RDS instance for the database.
+
+**Batch Processing/ High-performance computing (HPC)**: EC2 is also used for handling batch processing jobs. Here, the configuration would typically involve a high CPU instance type such as a c5.9xlarge. These instances would be part of an auto-scaling group to scale up during peak processing times and scale down during off-peak times.
+
+**Gaming**: EC2 instances can be used to host multiplayer gaming servers. Depending on the size of the user base, instance types like c5.large (for smaller user bases) up to c5.18xlarge (for large user bases) can be used.
+
+**Big Data Analytics**: EC2 can be used for running big data analytics software like Hadoop and Spark. Here, memory-optimized or storage-optimized instances like r5.24xlarge or d2.8xlarge might be suitable due to their high RAM and storage capacities respectively.
+
+Now, let's discuss some EC2 instance types:
+
+**EC2 Instance - Memory Optimized**
+
+Memory optimized instances are designed to deliver fast performance for workloads that process large data sets in memory. These instances are well suited for memory-intensive applications like high-performance databases, distributed memory caches, in-memory analytics, and real-time big data analytics.
+
+Examples of memory-optimized instances include the R5, R5a, R5ad, R5d, X1, X1e, z1d, High Memory instances, and u-6tb1.metal instances.
+
+**EC2 Instance - Compute Optimized**
+
+Compute optimized instances are designed for compute-bound applications that benefit from high-performance processors. They are well suited for compute-intensive applications, including batch processing workloads, media transcoding, high performance web servers, high-performance computing (HPC), scientific modeling, dedicated gaming servers and ad serving engines, machine learning inference, and other compute-intensive applications.
+
+Examples of compute-optimized instances include the C4, C5, C5n, C5d, and CC2 instance types.
+
+**EC2 Instance - Storage Optimized**
+
+Storage optimized instances are designed for workloads that require high, sequential read and write access to very large data sets on local storage. They are optimized to deliver tens of thousands of low-latency, random I/O operations per second (IOPS) to applications.
+
+They are ideal for distributed file systems, data warehousing applications, high-frequency online transaction processing (OLTP) systems, and massively parallel processing (MPP) data warehousing.
+
+Examples of storage-optimized instances include the I3, I3en, D2, and H1 instance types.
+
+Remember, the choice of instance type should reflect the needs of your application. Consider factors such as CPU requirements, memory requirements, storage I/O, and network performance when selecting your instance type. AWS also provides the option to change instance types, allowing you to optimize your instances for your use case and budget.
+
+
+##### EC2 - scenario: online project management software application.
+
+**Now let's consider a fictional startup, BrightWork, which has developed an online project management software application**. This application allows users to create, manage, and track projects in real time, with multiple users accessing the application concurrently. BrightWork has decided to host this web application on AWS using EC2 instances.
+
+**Application Architecture**
+
+The BrightWork team has decided to use a multi-tier architecture for the application:
+
+Presentation Layer (Front End): This is the web interface of the application, accessed by users. It is hosted on EC2 instances.
+
+Application Layer (Business Logic): This is where the logic of the application is processed. It is also hosted on EC2 instances.
+
+Database Layer: This is the data repository, used to store all the information needed by the application. This will be hosted on Amazon RDS.
+
+**Amazon EC2 Configuration**
+
+For the Presentation and Application Layers, BrightWork will use t3.medium instances. These instances offer a balance of compute, memory, and network resources, and they are a good choice for medium traffic web servers. Each t3.medium instance comes with 2 vCPUs and 4 GiB of memory, which is enough to smoothly run the application.
+
+They decided to start with 2 EC2 instances (one for the Presentation Layer and one for the Application Layer) in a single availability zone. This setup will allow them to evaluate their application’s performance before they decide whether to scale out (add more instances) or scale up (move to a larger instance type).
+
+To ensure high availability and failover support for EC2 instances, they'll distribute the instances across multiple Availability Zones in the same region, which will protect the application from a single point of failure.
+
+**Load Balancer Configuration**
+
+To distribute incoming application traffic across multiple EC2 instances, they'll set up an Application Load Balancer (ALB). The ALB will automatically distribute incoming application traffic across all the EC2 instances, ensuring that no single instance is overwhelmed with too much traffic.
+
+The ALB will also perform health checks on the EC2 instances. If an instance becomes unhealthy or goes down for some reason, the ALB will automatically reroute the traffic to the healthy instances.
+
+**Amazon RDS Configuration**
+
+For the database layer, BrightWork will use Amazon RDS (Relational Database Service) with MySQL as the database engine. They will use the db.t3.medium instance type, which comes with 2 vCPUs and 4 GiB of memory. This is a good choice for a startup database, as it provides enough resources for their initial load.
+
+For high availability and failover support for DB instances, they will use Multi-AZ deployments. If the primary DB instance fails, Amazon RDS can automatically failover to the standby instance.
+
+By using Amazon EC2 with ALB and Amazon RDS, BrightWork will be able to provide a reliable, scalable, and highly available web application to its users. As their user base grows, they can easily scale their infrastructure to meet demand.
+
+
+##### EC2 - Batch Processing/ High-performance computing - Scenario.
+
+Next let’s consider the scenario of Batch Processing/ High-performance computing (HPC).
+
+Batch Processing/ High-performance computing (HPC): EC2 is also used for handling batch processing jobs. Here, the configuration would typically involve a high CPU instance type such as a c5.9xlarge. These instances would be part of an auto-scaling group to scale up during peak processing times and scale down during off-peak times.
+
+**Now let's consider a hypothetical startup, Genomix, which specializes in genomic data processing.** They receive thousands of genomic data samples from their clients, process these data to extract meaningful information, and then provide a detailed report to their clients.
+
+Due to the nature of their work, the processing is highly CPU-intensive and needs to be completed in the shortest time possible. Moreover, they receive varying numbers of data samples at different times. During peak times, they might receive thousands of samples per day, while during off-peak times, they might only receive a few hundred samples per day.
+
+To meet their business requirements, they decided to host their batch processing application on AWS using EC2 instances.
+
+**Amazon EC2 Configuration**
+
+Genomix will use c5.9xlarge instances for their batch processing jobs. The c5.9xlarge instance is a compute-optimized instance type that comes with 36 vCPUs and 72 GiB of memory, which is perfect for their CPU-intensive genomic data processing.
+
+Initially, they will start with 2 c5.9xlarge EC2 instances. These instances will be enough to handle their current load. But they will also set up an Auto Scaling group, which will allow them to automatically adjust the number of EC2 instances based on the demand.
+
+**Auto Scaling Configuration**
+
+With Auto Scaling, Genomix can ensure they have the right number of EC2 instances available to handle the load of their batch processing jobs.
+
+They will create an Auto Scaling group and associate it with their c5.9xlarge EC2 instances. They will configure the Auto Scaling group to start with 2 instances, which is their desired capacity.
+
+Next, they will configure the scaling policies. They will set a target CPU utilization of 60%. This means that if the average CPU utilization of the EC2 instances goes above 60%, Auto Scaling will launch new instances to bring the CPU utilization back to 60%. On the other hand, if the CPU utilization goes below 60%, Auto Scaling will terminate some instances.
+
+During peak times, when they receive thousands of genomic data samples, the CPU utilization of the EC2 instances will increase. Auto Scaling will automatically launch new instances to handle the increased load. Once the peak time is over, and the CPU utilization goes down, Auto Scaling will automatically terminate the extra instances.
+
+This setup will allow Genomix to handle varying load in an efficient and cost-effective manner. They can ensure high performance during peak times without wasting resources during off-peak times.
+
+**Storage Configuration**
+
+Given the nature of their work, storage is another important factor for Genomix. They will need a high-performing, durable storage solution to store their genomic data samples.
+
+For this, they can use Amazon EBS (Elastic Block Store). They can create EBS volumes and attach them to their EC2 instances. The size of the EBS volumes will depend on their storage requirements.
+
+They might choose the EBS Provisioned IOPS SSD (io1) volume type, which is designed to deliver high performance for I/O intensive workloads, such as databases or distributed file systems.
+
+By using Amazon EC2 with Auto Scaling and Amazon EBS, Genomix can build a highly scalable, high-performing, and cost-effective solution for their genomic data processing.
+
+
+##### More EC2 scenarios of interest: Game Industry Use-Case Scenarios.
+
+Gaming: EC2 instances can be used to host multiplayer gaming servers. Depending on the size of the user base, instance types like c5.large (for smaller user bases) up to c5.18xlarge (for large user bases) can be used.
+
+**Now, let's consider three hypothetical gaming companies: QuickQuest, an indie studio; MedPlay, a mid-sized game company; and TitanX, a large game development company**. Each of these companies will be launching a new multiplayer game, and they have different user base sizes and thus different needs for server capacity.
+
+**QuickQuest (Small User Base)**
+
+QuickQuest is a small indie game development studio launching their first multiplayer game, "Dungeon Crawler." As an indie studio, they have a relatively small user base, estimated around 5,000 players online concurrently at peak times.
+
+They'll be using a c5.large EC2 instance, which comes with 2 vCPUs and 4 GB of RAM. This configuration is enough to handle their expected traffic and provides sufficient performance for their game server's needs. They'll initially run two instances for redundancy and load balancing purposes.
+
+To ensure availability and handle any spikes in traffic, they will set up an Auto Scaling group that scales based on CPU utilization. If the CPU utilization exceeds 70% for a sustained period, the group is configured to add additional instances, ensuring smooth gameplay even during unexpected surges.
+
+**MedPlay (Medium User Base)**
+
+MedPlay is a mid-sized game company launching their new multiplayer game, "Space Pirates." With previous successful games, they have a substantial user base and expect around 50,000 concurrent players at peak times.
+
+Due to the larger expected user base, MedPlay will be using c5.4xlarge EC2 instances for their game servers. The c5.4xlarge provides 16 vCPUs and 32 GB of RAM, providing better performance for their more substantial player base. They'll start with five instances to distribute their game's server load.
+
+Like QuickQuest, they will use an Auto Scaling group to manage traffic spikes and maintain performance. The group will add additional c5.4xlarge instances when average CPU utilization exceeds 60%.
+
+**TitanX (Large User Base)**
+
+TitanX is a leading game development company launching their highly anticipated game, "Battlefield Titans." They have a large fan base and expect up to 500,000 players online concurrently at peak times.
+
+To handle this enormous load, they'll use c5.18xlarge EC2 instances for their game servers. These instances offer 72 vCPUs and 144 GB of RAM, providing high performance and the capacity to handle their substantial player base. They will initially deploy 20 instances across multiple availability zones for load balancing and redundancy.
+
+Like the smaller companies, TitanX will also use Auto Scaling to handle traffic variations. However, due to the size of their player base and the criticality of the gaming experience, they will have a more complex scaling strategy, using multiple metrics, including CPU utilization, network traffic, and in-game latency, to adjust their infrastructure in real time.
+
+By choosing EC2 instance types that match their user base size, each company ensures they deliver a smooth gaming experience while controlling their costs. Auto Scaling gives them the flexibility to respond to player demand in real time, ensuring they can handle peak traffic times without maintaining unnecessary resources during off-peak periods.
+
+
+##### More scenarios of interest: Big Data Analytics and EC2.
+
+**Big Data Analytics: EC2 can be used for running big data analytics software like Hadoop and Spark.** Here, memory-optimized or storage-optimized instances like r5.24xlarge or d2.8xlarge might be suitable due to their high RAM and storage capacities respectively.
+
+**Now, let's consider three hypothetical companies: DataStart, a small startup; MidAnalytica, a medium-sized analytics company; and InfoCorp, a large established corporation**. Each of these companies operates in different sectors but they all need to run big data analytics on their respective data sets.
+
+DataStart (Small Startup)
+
+DataStart is a small startup specializing in social media analytics. They collect and process large amounts of social media data to derive user behavior patterns, which they sell to marketing firms.
+
+Due to their budget constraints and smaller data volume, they will use r5.xlarge EC2 instances, which come with 4 vCPUs and 32 GB of memory. This is enough to run their Hadoop and Spark applications and provides a cost-effective solution for their analytics needs.
+
+They will use Amazon EMR (Elastic MapReduce) to deploy their Hadoop and Spark clusters. Amazon EMR is a cloud-based big data platform that makes it easy to process large amounts of data quickly and cost-effectively. By using the spot instances feature of Amazon EMR, they can further save on costs.
+
+MidAnalytica (Medium-Sized Company)
+
+MidAnalytica is a mid-sized company that provides predictive analytics solutions for retail companies. They process large amounts of retail transaction data to derive insights and make predictions about future trends.
+
+Due to their larger data volume and more significant computational needs, they will use r5.8xlarge EC2 instances, which come with 32 vCPUs and 256 GB of memory. This provides better performance for their Hadoop and Spark applications.
+
+Like DataStart, they will use Amazon EMR to deploy their Hadoop and Spark clusters. But due to their higher budget and greater need for performance, they will use a mix of on-demand and reserved instances instead of spot instances. This will provide better performance and more cost predictability.
+
+InfoCorp (Large Established Corporation)
+
+InfoCorp is a large corporation specializing in financial analytics. They process massive amounts of financial transaction data to derive insights and make strategic decisions.
+
+Due to their vast data volume and high computational needs, they will use r5.24xlarge EC2 instances, which come with 96 vCPUs and 768 GB of memory. This provides high performance for their Hadoop and Spark applications.
+
+Like the smaller companies, they will use Amazon EMR to deploy their Hadoop and Spark clusters. But due to their large budget and critical need for performance and availability, they will use a mix of on-demand and reserved instances, and they might even consider dedicated instances for their critical workloads.
+
+In addition to Amazon EMR, they will also use other AWS big data services like Amazon Redshift for data warehousing and Amazon Athena for interactive query services. This will allow them to build a comprehensive big data analytics solution that can meet their complex needs.
+
+In all cases, these companies will need to consider their data storage needs. Amazon S3 can be used for storing raw data, while Amazon EFS can be used for shared storage across the Hadoop cluster. The choice between memory-optimized or storage-optimized instances will depend on the specific characteristics of their workloads. If their analytics jobs involve processing large datasets in memory, memory-optimized instances would be preferable. Conversely, if their jobs involve a lot of disk I/O, storage-optimized instances might be a better choice.
+
+
+## AWS Lambda
 
 AWS Lambda is a serverless compute service that lets you run your code without provisioning or managing servers. It executes your code only when needed and scales automatically, from a few requests per day to thousands per second.
 
